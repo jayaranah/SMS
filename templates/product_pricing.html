@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Product Pricing for {{ supplier.1 }}</h1>
+    <form method="post">
+        <div class="form-group row">
+          <label for="product" class="col-sm-2 col-form-label">Product:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="product" name="product" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="size" class="col-sm-2 col-form-label">Size:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="size" name="size" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="code" class="col-sm-2 col-form-label">Code:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="code" name="code" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="brand" class="col-sm-2 col-form-label">Brand:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="brand" name="brand" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="price" class="col-sm-2 col-form-label">Price:</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="price" name="price" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="unit" class="col-sm-2 col-form-label">Unit:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="unit" name="unit" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="other_details" class="col-sm-2 col-form-label">Other Details:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="other_details" name="other_details">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="date" class="col-sm-2 col-form-label">Date:</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="date" name="date" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </form>
+      
+    <hr>
+    <h2>Product Pricing List</h2>
+    {% if product_pricing|length == 0 %}
+        <p>No product pricing found.</p>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Code</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th>Other Details</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_pricing %}
+                <tr>
+                    <td>{{ product.2 }}</td>
+                    <td>{{ product.3 }}</td>
+                    <td>{{ product.4 }}</td>
+                    <td>{{ product.5 }}</td>
+                    <td>{{ product.6 }}</td>
+                    <td>{{ product.7 }}</td>
+                    <td>{{ product.8 }}</td>
+                    <td>{{ product.9 }}</td>
+                </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
