@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Suppliers</h1>
+
+        <form method="POST" action="{{ url_for('search') }}" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="search_query" class="form-control" placeholder="Search suppliers...">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-striped" style="max-width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Supplier Name</th>
+                        <th>Contact Person</th>
+                        <th>Telephone</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                        <tr class="table-row-small">
+                            <td>{{ row['supplier_name'] }}</td>
+                            <td>{{ row['contact_person'] }}</td>
+                            <td>{{ row['telephone_1'] or row['telephone_2'] or row['telephone_3'] }}</td>
+                            <td>{{ row['mobile_1'] or row['mobile_2'] }}</td>
+                            <td>{{ row['email'] }}</td>
+                            <td>
+                                <a href="{{ url_for('view', id=row['id']) }}" class="btn btn-secondary btn-custom">View</a>
+                                <a href="{{ url_for('edit', id=row['id']) }}" class="btn btn-primary btn-custom">Edit</a>
+                                <a href="{{ url_for('delete', id=row['id']) }}" class="btn btn-danger btn-custom" onclick="return confirm('Are you sure you want to delete this supplier?')">Delete</a>
+                                <a href="{{ url_for('product_pricing', supplier_id=row['id']) }}" class="btn btn-info btn-sm" role="button">Product Pricing</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ url_for('add') }}" class="btn btn-success">Add Supplier</a>
+    </div>
+{% endblock %}
