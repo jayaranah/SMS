@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1>Update Product</h1>
+  <form method="post" action="{{ url_for('update_product', product_id=product[0], supplier_id=suppliers[0]) }}" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="supplier_id">Supplier:</label>
+      <select class="form-control" id="supplier_id" name="supplier_id">
+        {% for sup in suppliers %}
+          {% if sup[0] == suppliers[0] %}
+            <option value="{{ sup[0] }}" selected>{{ sup[1] }}</option>
+          {% else %}
+            <option value="{{ sup[0] }}">{{ sup[1] }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="product">Product:</label>
+      <input type="text" class="form-control" id="product" name="product" value="{{ product[1] }}">
+    </div>
+    <div class="form-group">
+      <label for="size">Size:</label>
+      <input type="text" class="form-control" id="size" name="size" value="{{ product[2] }}">
+    </div>
+    <div class="form-group">
+      <label for="code">Code:</label>
+      <input type="text" class="form-control" id="code" name="code" value="{{ product[3] }}">
+    </div>
+    <div class="form-group">
+      <label for="brand">Brand:</label>
+      <input type="text" class="form-control" id="brand" name="brand" value="{{ product[4] }}">
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" class="form-control" id="price" name="price" value="{{ product[7] }}">
+    </div>
+    <div class="form-group">
+      <label for="unit">Unit:</label>
+      <input type="text" class="form-control" id="unit" name="unit" value="{{ product[5] }}">
+    </div>
+    <div class="form-group">
+      <label for="other_details">Other Details:</label>
+      <textarea class="form-control" id="other_details" name="other_details" rows="3">{{ product[6] }}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" class="form-control" id="date" name="date" value="{{ product[8] }}">
+    </div>
+    <div class="form-group">
+      <label for="photos">Product Photos:</label>
+      <input type="file" class="form-control-file" id="photos" name="photos[]" multiple>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Update Product</button>
+  </form>
+
+{% endblock %}

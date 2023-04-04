@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Supplier Details</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Contact Information <a href="{{ url_for('edit', id=supplier[0]) }}"><i class="fas fa-edit"></i></a></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><i class="fas fa-building" style="font-size: 20px;"></i></a> : {{ supplier[1] }}</p>
+                        <p class="card-text"><i class="fas fa-id-card"></i> : {{ supplier[2] }}</p>
+                        <p class="card-text"><i class="fas fa-phone-alt"></i> : {{ supplier[3] }}</p>
+                        <p class="card-text"><i class="fas fa-phone-alt"></i> : {{ supplier[4] }}</p>
+                        <p class="card-text"><i class="fas fa-phone-alt"></i> : {{ supplier[5] }}</p>
+                        <p class="card-text"><i class="fas fa-mobile-alt"></i> : {{ supplier[6] }}</p>
+                        <p class="card-text"><i class="fas fa-mobile-alt"></i> : {{ supplier[7] }}</p>
+                        <p class="card-text"><i class="fas fa-fax"></i> : {{ supplier[8] }}</p>
+                        <p class="card-text"><i class="fas fa-envelope"></i> : {{ supplier[9] }}</p>
+                        {% if supplier[10] %}
+                            <p class="card-text"><i class="fas fa-globe"></i> : <a href="{{ 'http://' + supplier[10] }}" target="_blank">{{ supplier[10] }}</a></p>
+                        {% endif %}
+                        {% if supplier[11] %}
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> : <a href="{{ 'https://www.google.com/maps/place/' + supplier[11].replace(' ', '+') }}" target="_blank">{{ supplier[11] }}</a></p>
+                        {% endif %}
+                        <p class="card-text"><i class="fas fa-calendar-check"></i> : {{ supplier[12] }}</p>
+                        <p class="card-text"><i class="fas fa-tags"></i>: {{ supplier[13] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Additional Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><i class="fas fa-clipboard"></i> :</p><pre>{{ supplier[13] }}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="{{ url_for('index') }}"><i class="fas fa-arrow-left" style="font-size: 30px;"></i></a>  
+        
+    </div>
+{% endblock %}

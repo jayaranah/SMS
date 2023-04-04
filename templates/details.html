@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Suppliers</h1>
+  <hr>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact Person</th>
+        <th>Telephone</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for supplier in suppliers %}
+      <tr>
+        <td><a href="{{ url_for('details', supplier_id=supplier.id) }}">{{ supplier.supplier_name }}</a></td>
+        <td>{{ supplier.contact_person }}</td>
+        <td>{{ supplier.telephone }}</td>
+        <td>{{ supplier.mobile }}</td>
+        <td>{{ supplier.email }}</td>
+        <td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
